@@ -1,9 +1,11 @@
-package com.example.demo.student;
+package com.example.demo.student.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.student.model.Student;
+import com.example.demo.student.service.StudentService;
 
 import java.util.List;
 
@@ -11,12 +13,13 @@ import java.util.List;
 @RequestMapping(path = "api/v1/students")
 public class StudentController {
     private final StudentService studentService;
-    @Autowired
-    public StudentController(StudentService studentService){
+
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
+
     @GetMapping
-    public List<Student> getStudents(){
+    public List<Student> getStudents() {
         return studentService.getStudents();
     }
 }
